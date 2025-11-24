@@ -20,6 +20,12 @@
         <scope>test</scope>
     </dependency>
     <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-params</artifactId>
+        <version>5.8.0</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-junit-jupiter</artifactId>
         <version>5.20.0</version>
@@ -32,6 +38,12 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.7</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/example/Animal.class</exclude>
+                        <exclude>com/example/Predator.class</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
