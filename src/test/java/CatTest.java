@@ -2,12 +2,19 @@
 import com.example.Cat;
 import com.example.Feline;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static TestData.TestDataFood.PREDATOR_FOOD;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class CatTest {
+
+    @Mock
+    private Feline feline;
 
     @Test
     public void getFood_ShouldReturnMeat() throws Exception {
@@ -18,19 +25,17 @@ public class CatTest {
 
     @Test
     public void getSound_ShouldReturnMeow() {
-        Feline felineMock = mock(Feline.class);
-        Cat cat = new Cat(felineMock);
+        Cat cat = new Cat(feline);
         assertEquals("Мяу", cat.getSound());
     }
 
     @Test
     public void getFood_ShouldDelegateToPredator() throws Exception {
-        Feline predatorMock = mock(Feline.class);
-        when(predatorMock.eatMeat()).thenReturn(PREDATOR_FOOD);
+        when(feline.eatMeat()).thenReturn(PREDATOR_FOOD);
 
-        Cat cat = new Cat(predatorMock);
+        Cat cat = new Cat(feline);
 
         assertEquals(PREDATOR_FOOD, cat.getFood());
-        verify(predatorMock, times(1)).eatMeat();
+        verify(feline, times(1)).eatMeat();
     }
 }
