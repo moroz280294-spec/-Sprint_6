@@ -2,7 +2,7 @@ import com.example.Feline;
 import org.junit.jupiter.api.Test;
 
 
-import static TestData.TestDataFood.PREDATOR_FOOD;
+import static testdata.TestDataFood.PREDATOR_FOOD;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FelineTest {
