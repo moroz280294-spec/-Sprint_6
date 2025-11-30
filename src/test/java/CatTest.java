@@ -17,20 +17,20 @@ public class CatTest {
     private Feline feline;
 
     @Test
-    public void getFood_ShouldReturnMeat() throws Exception {
+    public void getFoodShouldReturnMeatTest() throws Exception {
         Feline feline = new Feline();
         Cat cat = new Cat(feline);
         assertEquals(PREDATOR_FOOD, cat.getFood());
     }
 
     @Test
-    public void getSound_ShouldReturnMeow() {
+    public void getSoundShouldReturnMeowTest() {
         Cat cat = new Cat(feline);
         assertEquals("Мяу", cat.getSound());
     }
 
     @Test
-    public void getFood_ShouldDelegateToPredator() throws Exception {
+    public void getFoodShouldDelegateToPredatorTest() throws Exception {
         when(feline.eatMeat()).thenReturn(PREDATOR_FOOD);
 
         Cat cat = new Cat(feline);

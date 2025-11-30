@@ -14,7 +14,7 @@ public class LionParameterizedTest {
             "Самец, true",
             "Самка, false"
     })
-    void doesHaveMane_ShouldReturnCorrectValue(String sex, boolean expected) throws Exception {
+    void doesHaveManeShouldReturnCorrectValueTest(String sex, boolean expected) throws Exception {
         Feline feline = new Feline();
         Lion lion = new Lion(sex, feline);
         assertEquals(expected, lion.doesHaveMane());
@@ -22,7 +22,7 @@ public class LionParameterizedTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"Трансформер"})
-    void constructor_ShouldThrowExceptionWithCorrectMessage_ForInvalidSex(String invalidSex) {
+    void constructorShouldThrowExceptionWithCorrectMessageForInvalidSexTest(String invalidSex) {
         Feline feline = new Feline();
 
         Exception exception = assertThrows(Exception.class, () -> new Lion(invalidSex, feline));

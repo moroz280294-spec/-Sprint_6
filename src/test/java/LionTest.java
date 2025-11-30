@@ -15,20 +15,20 @@ public class LionTest {
     private Feline feline;
 
     @Test
-    public void getFood_ShouldReturnPredatorFood() throws Exception {
+    public void getFoodShouldReturnPredatorFoodTest() throws Exception {
         Feline feline = new Feline();
         Lion lion = new Lion(feline);
         assertEquals(PREDATOR_FOOD, lion.getFood());
     }
     @Test
-    void getKittens_Default_ReturnsOne() {
+    void getKittensDefaultReturnsOneTest() {
         Feline feline = new Feline();
         Lion lion = new Lion(feline);
         assertEquals(1, lion.getKittens());
     }
 
     @Test
-    void getFood_ShouldDelegateToFelinePredator() throws Exception {
+    void getFoodShouldDelegateToFelinePredatorTest() throws Exception {
         when(feline.getFood("Хищник")).thenReturn(PREDATOR_FOOD);
 
         Lion lion = new Lion(feline);
@@ -38,7 +38,7 @@ public class LionTest {
     }
 
     @Test
-    void getKittens_ShouldDelegateToFeline() {
+    void getKittensShouldDelegateToFelineTest() {
         when(feline.getKittens()).thenReturn(3);
 
         Lion lion = new Lion(feline);

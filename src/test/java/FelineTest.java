@@ -9,23 +9,23 @@ public class FelineTest {
 
 
     @Test
-        public void getFood_ShouldReturnMeat() throws Exception {
+        public void getFoodShouldReturnMeatTest() throws Exception {
         Feline feline = new Feline();
         assertEquals(PREDATOR_FOOD, feline.eatMeat());
     }
     @Test
-    public void getFamily_ShouldReturnFelidae() throws Exception {
+    public void getFamilyShouldReturnFelidaeTest() throws Exception {
         Feline feline = new Feline();
         assertEquals("Кошачьи", feline.getFamily());
     }
     @Test
-    void getKittens_Default_ReturnsOne() {
+    void getKittensDefaultReturnsOneTest() {
         Feline feline = new Feline();
         assertEquals(1, feline.getKittens());
     }
 
     @Test
-    void getKittens_WithArgument_ReturnsArgument() {
+    void getKittensWithArgumentReturnsArgumentTest() {
         Feline feline = new Feline();
         assertEquals(7, feline.getKittens(7));
     }
