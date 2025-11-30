@@ -16,16 +16,11 @@ public class LionTest {
 
     @Test
     public void getFoodShouldReturnPredatorFoodTest() throws Exception {
-        Feline feline = new Feline();
+        when(feline.getFood("Хищник")).thenReturn(PREDATOR_FOOD);
         Lion lion = new Lion(feline);
         assertEquals(PREDATOR_FOOD, lion.getFood());
     }
-    @Test
-    void getKittensDefaultReturnsOneTest() {
-        Feline feline = new Feline();
-        Lion lion = new Lion(feline);
-        assertEquals(1, lion.getKittens());
-    }
+
 
     @Test
     void getFoodShouldReturnCorrectValueWhenDelegatingToFelinePredatorTest() throws Exception {

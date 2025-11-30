@@ -18,7 +18,7 @@ public class CatTest {
 
     @Test
     public void getFoodShouldReturnMeatTest() throws Exception {
-        Feline feline = new Feline();
+        when(feline.eatMeat()).thenReturn(PREDATOR_FOOD);
         Cat cat = new Cat(feline);
         assertEquals(PREDATOR_FOOD, cat.getFood());
     }

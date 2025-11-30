@@ -14,7 +14,7 @@ public class FelineTest {
         assertEquals(PREDATOR_FOOD, feline.eatMeat());
     }
     @Test
-    public void getFamilyShouldReturnFelidaeTest() throws Exception {
+    public void getFamilyShouldReturnFelidaeTest() {
         Feline feline = new Feline();
         assertEquals("Кошачьи", feline.getFamily());
     }
