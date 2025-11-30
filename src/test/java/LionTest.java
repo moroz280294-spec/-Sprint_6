@@ -28,22 +28,40 @@ public class LionTest {
     }
 
     @Test
-    void getFoodShouldDelegateToFelinePredatorTest() throws Exception {
+    void getFoodShouldReturnCorrectValueWhenDelegatingToFelinePredatorTest() throws Exception {
         when(feline.getFood("Хищник")).thenReturn(PREDATOR_FOOD);
 
         Lion lion = new Lion(feline);
 
         assertEquals(PREDATOR_FOOD, lion.getFood());
+    }
+
+    @Test
+    void getFoodShouldCallFelineGetFoodWithCorrectParameterTest() throws Exception {
+        when(feline.getFood("Хищник")).thenReturn(PREDATOR_FOOD);
+
+        Lion lion = new Lion(feline);
+        lion.getFood();
+
         verify(feline).getFood("Хищник");
     }
 
     @Test
-    void getKittensShouldDelegateToFelineTest() {
+    void getKittensShouldReturnCorrectValueWhenDelegatingToFelineTest() {
         when(feline.getKittens()).thenReturn(3);
 
         Lion lion = new Lion(feline);
 
         assertEquals(3, lion.getKittens());
+    }
+
+    @Test
+    void getKittensShouldCallFelineGetKittensTest() {
+        when(feline.getKittens()).thenReturn(3);
+
+        Lion lion = new Lion(feline);
+        lion.getKittens();
+
         verify(feline).getKittens();
     }
 }

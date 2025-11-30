@@ -30,12 +30,21 @@ public class CatTest {
     }
 
     @Test
-    public void getFoodShouldDelegateToPredatorTest() throws Exception {
+    public void getFoodShouldReturnCorrectValueWhenDelegatingToPredatorTest() throws Exception {
         when(feline.eatMeat()).thenReturn(PREDATOR_FOOD);
 
         Cat cat = new Cat(feline);
 
         assertEquals(PREDATOR_FOOD, cat.getFood());
+    }
+
+    @Test
+    public void getFoodShouldCallEatMeatOnceTest() throws Exception {
+        when(feline.eatMeat()).thenReturn(PREDATOR_FOOD);
+
+        Cat cat = new Cat(feline);
+        cat.getFood();
+
         verify(feline, times(1)).eatMeat();
     }
 }
