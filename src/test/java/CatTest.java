@@ -1,0 +1,50 @@
+
+import com.example.Cat;
+import com.example.Feline;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import static testdata.TestDataFood.PREDATOR_FOOD;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+public class CatTest {
+
+    @Mock
+    private Feline feline;
+
+    @Test
+    public void getFoodShouldReturnMeatTest() throws Exception {
+        when(feline.eatMeat()).thenReturn(PREDATOR_FOOD);
+        Cat cat = new Cat(feline);
+        assertEquals(PREDATOR_FOOD, cat.getFood());
+    }
+
+    @Test
+    public void getSoundShouldReturnMeowTest() {
+        Cat cat = new Cat(feline);
+        assertEquals("Мяу", cat.getSound());
+    }
+
+    @Test
+    public void getFoodShouldReturnCorrectValueWhenDelegatingToPredatorTest() throws Exception {
+        when(feline.eatMeat()).thenReturn(PREDATOR_FOOD);
+
+        Cat cat = new Cat(feline);
+
+        assertEquals(PREDATOR_FOOD, cat.getFood());
+    }
+
+    @Test
+    public void getFoodShouldCallEatMeatOnceTest() throws Exception {
+        when(feline.eatMeat()).thenReturn(PREDATOR_FOOD);
+
+        Cat cat = new Cat(feline);
+        cat.getFood();
+
+        verify(feline, times(1)).eatMeat();
+    }
+}
